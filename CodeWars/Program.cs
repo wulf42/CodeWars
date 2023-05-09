@@ -73,3 +73,66 @@ int FindEvenIndex(int[] arr)
     return -1;
 }
 
+int[] BubbleSort(int[] array)
+{
+    int temp;
+    int changes;
+    bool isSorted = false;
+
+    while (!isSorted)
+    {
+        changes = 0;
+        for (int i = 0; i < array.Length - 1; i++)
+        {
+            if (array[i] > array[i + 1])
+            {
+                temp = array[i + 1];
+                array[i + 1] = array[i];
+                array[i] = temp;
+                changes++;
+            }
+        }
+        if (changes == 0)
+        {
+            isSorted = true;
+        }
+    }
+    return array;
+}
+int CountOdd(int[] array)
+{
+    int count = 0;
+    foreach (int value in array)
+    {
+        count += value % 2;
+    }
+    return count;
+}
+int[] SortArray(int[] array)    //even(2,4,6...) stay, sort odd (1,3,5...)           //bubble sort implemented
+{
+    int evenSize = CountOdd(array);
+    int[] even = new int[evenSize];
+    int k = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] % 2 != 0)
+        {
+            even[k] = array[i];
+            k++;
+        }
+    }
+
+    BubbleSort(even);
+
+    k = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] % 2 != 0)
+        {
+            array[i] = even[k];
+            k++;
+        }
+    }
+
+    return array;
+}
