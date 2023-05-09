@@ -143,3 +143,17 @@ string Rgb(int r, int g, int b)
     b = (b <= 0) ? 0 : (b >= 255) ? 255 : b;
     return string.Format("{0:x2}{1:x2}{2:x2}", r, g, b).ToUpper();
 }
+
+public static class Kata
+{
+    public static int Solution(int value)
+    {
+        int x = 0;
+        for (int i = 3; i < value; i++)
+        {
+            if (i % 3 == 0 || i % 5 == 0)
+                x += i;
+        }
+        return x;
+    }
+}
