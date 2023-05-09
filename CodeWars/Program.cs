@@ -1,4 +1,5 @@
 ﻿// solutions
+
 string greet() => "hello world!";
 int DoubleInteger(int n) => 2 * n;
 
@@ -143,7 +144,6 @@ string Rgb(int r, int g, int b)
     b = (b <= 0) ? 0 : (b >= 255) ? 255 : b;
     return string.Format("{0:x2}{1:x2}{2:x2}", r, g, b).ToUpper();
 }
-
 public static class Kata
 {
     public static int Solution(int value)
@@ -155,5 +155,31 @@ public static class Kata
                 x += i;
         }
         return x;
+    }
+}
+
+public class AreTheySame
+{
+    public bool comp(int[] a, int[] b)
+    {
+        if (a == null || b == null || a.Length != b.Length) return false;
+
+        for (int i = 0; i < a.Length; i++)
+        {
+            for (int j = 0; j < a.Length; j++)
+            {
+                if (a[i] * a[i] == b[j])
+                {
+                    b[j] = 0;
+                    break;
+                }
+            }
+        }
+        for (int i = 0; i < b.Length; i++)
+        {
+            if (b[i] != 0) return false;
+        }
+
+        return true;
     }
 }
