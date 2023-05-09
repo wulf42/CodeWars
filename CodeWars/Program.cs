@@ -136,3 +136,10 @@ int[] SortArray(int[] array)    //even(2,4,6...) stay, sort odd (1,3,5...)      
 
     return array;
 }
+string Rgb(int r, int g, int b)
+{
+    r = (r <= 0) ? 0 : (r >= 255) ? 255 : r;
+    g = (g <= 0) ? 0 : (g >= 255) ? 255 : g;
+    b = (b <= 0) ? 0 : (b >= 255) ? 255 : b;
+    return string.Format("{0:x2}{1:x2}{2:x2}", r, g, b).ToUpper();
+}
