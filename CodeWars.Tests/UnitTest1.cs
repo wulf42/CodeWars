@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Numerics;
 
 namespace CodeWars.Tests
 {
@@ -53,6 +54,23 @@ namespace CodeWars.Tests
         {
             // Act
             string actualOutput = Kata.GetReadableTime(seconds);
+            // Assert
+            Assert.That(actualOutput, Is.EqualTo(expectedOutput));
+        }
+
+        [Test]
+        [TestCase("4", "1", 4)]
+        [TestCase("4", "2", 6)]
+        [TestCase("9", "7", 9)]
+        [TestCase("10", "1000000", 0)]
+        public void GetLastDigit_Given2Numbers_ReturnLastDigitFromN1PowerN2(string n1, string n2, int expectedOutput)
+        {
+            // Arrange
+            BigInteger a = BigInteger.Parse(n1);
+            BigInteger b = BigInteger.Parse(n2);
+
+            // Act
+            int actualOutput = (int)Kata.GetLastDigit(a, b);
             // Assert
             Assert.That(actualOutput, Is.EqualTo(expectedOutput));
         }
