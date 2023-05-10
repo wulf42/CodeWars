@@ -145,9 +145,9 @@ string Rgb(int r, int g, int b)
     return string.Format("{0:x2}{1:x2}{2:x2}", r, g, b).ToUpper();
 }
 
-public class Kata
+public static class Kata
 {
-    public int sumOfNumbersDivisibleBy3or5(int value)
+    public static int sumOfNumbersDivisibleBy3or5(int value)
     {
         int sum = 0;
         for (int i = 3; i < value; i++)
@@ -158,7 +158,7 @@ public class Kata
         return sum;
     }
 
-    public string Rot13(string input)
+    public static string Rot13(string input)
     {
         char[] characters = input.ToCharArray();
         for (int i = 0; i < characters.Length; i++)
@@ -182,7 +182,7 @@ public class Kata
         return new string(characters);
     }
 
-    public bool comp(int[] a, int[] b)
+    public static bool comp(int[] a, int[] b)
     {
         if (a == null || b == null || a.Length != b.Length) return false;
 
@@ -203,5 +203,13 @@ public class Kata
         }
 
         return true;
+    }
+
+    public static string GetReadableTime(int seconds)
+    {
+        int hours = seconds / 3600;
+        int minutes = seconds / 60 % 60;
+        seconds = seconds % 60;
+        return string.Format("{0:D2}:{1:D2}:{2:D2}", hours, minutes, seconds);
     }
 }

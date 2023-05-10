@@ -9,14 +9,11 @@ namespace CodeWars.Tests
         [TestCase(20, 78)]
         public void sumOfNumbersDivisibleBy3or5_GivenOneInt_ReturnsSumOfRightNumbers(int input, int expectedOutput)
         {
-            // Arrange
-            Kata kata = new Kata();
-
             // Act
-            int actualOutput = kata.sumOfNumbersDivisibleBy3or5(input);
+            int actualOutput = Kata.sumOfNumbersDivisibleBy3or5(input);
 
             // Assert
-            Assert.AreEqual(expectedOutput, actualOutput);
+            Assert.That(actualOutput, Is.EqualTo(expectedOutput));
         }
 
         [Test]
@@ -28,14 +25,11 @@ namespace CodeWars.Tests
            false)]
         public void Comp_GivenTwoArrays_ReturnsTrueIfSquaredArrayBContainsTheSameElementsAsArrayA(int[] a, int[] b, bool expected)
         {
-            // Arrange
-            Kata kata = new Kata();
-
             // Act
-            bool result = kata.comp(a, b);
+            bool result = Kata.comp(a, b);
 
             // Assert
-            Assert.AreEqual(expected, result);
+            Assert.That(result, Is.EqualTo(expected));
         }
 
         [Test]
@@ -43,12 +37,24 @@ namespace CodeWars.Tests
         [TestCase("This is my first ROT13 excercise!", "Guvf vf zl svefg EBG13 rkprepvfr!")]
         public void Rot13_GivenString_ReturnsStringCodedWithRot13Algorithm(string input, string expectedOutput)
         {
-            // Arrange
-            Kata kata = new Kata();
             // Act
-            string actualOutput = kata.Rot13(input);
+            string actualOutput = Kata.Rot13(input);
             // Assert
-            Assert.AreEqual(expectedOutput, actualOutput);
+            Assert.That(actualOutput, Is.EqualTo(expectedOutput));
+        }
+
+        [Test]
+        [TestCase(0, "00:00:00")]
+        [TestCase(5, "00:00:05")]
+        [TestCase(60, "00:01:00")]
+        [TestCase(86399, "23:59:59")]
+        [TestCase(359999, "99:59:59")]
+        public void GetReadableTime_GivenInt_ReturnsConvertedTimeToDigitalClock(int seconds, string expectedOutput)
+        {
+            // Act
+            string actualOutput = Kata.GetReadableTime(seconds);
+            // Assert
+            Assert.That(actualOutput, Is.EqualTo(expectedOutput));
         }
     }
 }
