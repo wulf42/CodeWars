@@ -146,11 +146,7 @@ string Rgb(int r, int g, int b)
     b = (b <= 0) ? 0 : (b >= 255) ? 255 : b;
     return string.Format("{0:x2}{1:x2}{2:x2}", r, g, b).ToUpper();
 }
-Console.WriteLine(Kata.GetLastDigit(4, 1)); //4
-Console.WriteLine(Kata.GetLastDigit(4, 2)); //6
 
-//Console.WriteLine(Kata.GetLastDigit(9, 7)); //9
-//Console.WriteLine(Kata.GetLastDigit(10, 10000000000)); //0
 public static class Kata
 {
     public static int sumOfNumbersDivisibleBy3or5(int value)
@@ -220,4 +216,23 @@ public static class Kata
     }
 
     public static int GetLastDigit(BigInteger n1, BigInteger n2) => (int)BigInteger.ModPow(n1, n2, 10);
+
+    public static List<object> JosephusPermutation(List<object> items, int k)
+    {
+        if (k == 1)
+        {
+            return items;
+        }
+        List<object> result = new List<object>();
+        int counter = 1;
+        int index = 0;
+
+        while (items.Count > 0)
+        {
+            index = (index + k - 1) % items.Count;
+            result.Add(items[index]);
+            items.RemoveAt(index);
+        }
+        return result;
+    }
 }

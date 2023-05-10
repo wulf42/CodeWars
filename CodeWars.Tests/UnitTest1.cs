@@ -62,6 +62,7 @@ namespace CodeWars.Tests
         [TestCase("4", "1", 4)]
         [TestCase("4", "2", 6)]
         [TestCase("9", "7", 9)]
+        [TestCase("9", "0", 1)]
         [TestCase("10", "1000000", 0)]
         public void GetLastDigit_Given2Numbers_ReturnLastDigitFromN1PowerN2(string n1, string n2, int expectedOutput)
         {
@@ -73,6 +74,18 @@ namespace CodeWars.Tests
             int actualOutput = (int)Kata.GetLastDigit(a, b);
             // Assert
             Assert.That(actualOutput, Is.EqualTo(expectedOutput));
+        }
+
+        [Test]
+        public void JosephusPermutation_GivenList_ReturnListWithPermutation()
+        {
+            //Arrange
+            List<object> items = new List<object> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            List<object> expectedOutput = new List<object> { 2, 4, 6, 8, 10, 3, 7, 1, 9, 5 };
+            // Act
+            List<object> actual = Kata.JosephusPermutation(items, 2);
+            // Assert
+            Assert.That(actual, Is.EqualTo(expectedOutput));
         }
     }
 }
