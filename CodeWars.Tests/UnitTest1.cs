@@ -5,14 +5,15 @@ namespace CodeWars.Tests
     public class Tests
     {
         [Test]
-        public void Test()
+        [TestCase(10, 23)]
+        [TestCase(20, 78)]
+        public void sumOfNumbersDivisibleBy3or5_GivenOneInt_ReturnsSumOfRightNumbers(int input, int expectedOutput)
         {
             // Arrange
-            int input = 10;
-            int expectedOutput = 23;
+            Kata kata = new Kata();
 
             // Act
-            int actualOutput = Kata.Solution(input);
+            int actualOutput = kata.sumOfNumbersDivisibleBy3or5(input);
 
             // Assert
             Assert.AreEqual(expectedOutput, actualOutput);
@@ -28,13 +29,26 @@ namespace CodeWars.Tests
         public void Comp_GivenTwoArrays_ReturnsTrueIfSquaredArrayBContainsTheSameElementsAsArrayA(int[] a, int[] b, bool expected)
         {
             // Arrange
-            AreTheySame areTheySame = new AreTheySame();
+            Kata kata = new Kata();
 
             // Act
-            bool result = areTheySame.comp(a, b);
+            bool result = kata.comp(a, b);
 
             // Assert
             Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        [TestCase("test", "grfg")]
+        [TestCase("This is my first ROT13 excercise!", "Guvf vf zl svefg EBG13 rkprepvfr!")]
+        public void Rot13_GivenString_ReturnsStringCodedWithRot13Algorithm(string input, string expectedOutput)
+        {
+            // Arrange
+            Kata kata = new Kata();
+            // Act
+            string actualOutput = kata.Rot13(input);
+            // Assert
+            Assert.AreEqual(expectedOutput, actualOutput);
         }
     }
 }

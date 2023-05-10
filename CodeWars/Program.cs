@@ -144,22 +144,44 @@ string Rgb(int r, int g, int b)
     b = (b <= 0) ? 0 : (b >= 255) ? 255 : b;
     return string.Format("{0:x2}{1:x2}{2:x2}", r, g, b).ToUpper();
 }
-public static class Kata
+
+public class Kata
 {
-    public static int Solution(int value)
+    public int sumOfNumbersDivisibleBy3or5(int value)
     {
-        int x = 0;
+        int sum = 0;
         for (int i = 3; i < value; i++)
         {
             if (i % 3 == 0 || i % 5 == 0)
-                x += i;
+                sum += i;
         }
-        return x;
+        return sum;
     }
-}
 
-public class AreTheySame
-{
+    public string Rot13(string input)
+    {
+        char[] characters = input.ToCharArray();
+        for (int i = 0; i < characters.Length; i++)
+        {
+            for (int j = 0; j < 13; j++)
+            {
+                if ((characters[i] >= 65 && characters[i] <= 90) || (characters[i] >= 97 && characters[i] <= 122))
+                {
+                    characters[i]++;
+                    if (characters[i] == '{')
+                    {
+                        characters[i] = 'a';
+                    }
+                    else if (characters[i] == '[')
+                    {
+                        characters[i] = 'A';
+                    }
+                }
+            }
+        }
+        return new string(characters);
+    }
+
     public bool comp(int[] a, int[] b)
     {
         if (a == null || b == null || a.Length != b.Length) return false;
