@@ -87,6 +87,7 @@ namespace CodeWars.Tests
             // Assert
             Assert.That(actual, Is.EqualTo(expectedOutput));
         }
+
         [Test]
         [TestCase("aabb", 2)]
         [TestCase("aab", 1)]

@@ -147,12 +147,6 @@ string Rgb(int r, int g, int b)
     return string.Format("{0:x2}{1:x2}{2:x2}", r, g, b).ToUpper();
 }
 
-Console.WriteLine(Kata.DuplicateCount(""));
-Console.WriteLine(Kata.DuplicateCount("abcde"));
-Console.WriteLine(Kata.DuplicateCount("aabbcde"));
-Console.WriteLine(Kata.DuplicateCount("aabBcde"));
-Console.WriteLine(Kata.DuplicateCount("Indivisibility"));
-Console.WriteLine(Kata.DuplicateCount("123"));
 public static class Kata
 {
     public static int sumOfNumbersDivisibleBy3or5(int value)
@@ -244,5 +238,17 @@ public static class Kata
 
     public static int DuplicateCount(string str) => str.ToLower().GroupBy(c => c).Count(g => g.Count() > 1);
 
+    public static bool ValidatePin(string pin) => pin.All(Char.IsDigit) && (pin.Length == 4 || pin.Length == 6);
 
+    public static string GetMiddle(string s)
+    {
+        if (s.Length % 2 == 0)
+        {
+            return s.Substring(s.Length / 2 - 1, 2);
+        }
+        else
+        {
+            return s.Substring(s.Length / 2, 1);
+        }
+    }
 }
