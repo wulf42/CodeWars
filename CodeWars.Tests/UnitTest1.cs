@@ -87,5 +87,18 @@ namespace CodeWars.Tests
             // Assert
             Assert.That(actual, Is.EqualTo(expectedOutput));
         }
+        [Test]
+        [TestCase("aabb", 2)]
+        [TestCase("aab", 1)]
+        [TestCase("112233", 3)]
+        [TestCase("ccc", 1)]
+        public void DuplicateCount_GivenString_ReturnsCountOfDuplicateChars(string input, int expectedOutput)
+        {
+            //Arrange
+            // Act
+            int actual = Kata.DuplicateCount(input);
+            // Assert
+            Assert.That(actual, Is.EqualTo(expectedOutput));
+        }
     }
 }
