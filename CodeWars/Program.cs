@@ -146,7 +146,7 @@ string Rgb(int r, int g, int b)
     b = (b <= 0) ? 0 : (b >= 255) ? 255 : b;
     return string.Format("{0:x2}{1:x2}{2:x2}", r, g, b).ToUpper();
 }
-
+Console.WriteLine(Kata.FindNeedle(new object[] { "test", "junk", "no", "hay", "random", "k", "needle" }));
 public static class Kata
 {
     public static int sumOfNumbersDivisibleBy3or5(int value)
@@ -251,4 +251,17 @@ public static class Kata
             return s.Substring(s.Length / 2, 1);
         }
     }
+
+    public static string FindNeedle(object[] haystack)
+    {
+        for (int i = 0; i < haystack.Length; i++)
+        {
+            if (haystack[i] == "needle")
+            {
+                return string.Format("found the needle at position {0}", i);
+            }
+        }
+        return string.Format("the needle not found");
+    }
+
 }

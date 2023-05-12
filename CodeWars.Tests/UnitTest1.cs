@@ -101,5 +101,18 @@ namespace CodeWars.Tests
             // Assert
             Assert.That(actual, Is.EqualTo(expectedOutput));
         }
+
+        [Test]
+
+        public void FindNeedle_GivenStringArray_ReturnPositionOfNeedleString()
+        {
+            //Arrange
+            object[] input = new object[] { "hay", "junk", "hay", "hay", "moreJunk", "needle", "randomJunk" };
+            string expectedOutput = "found the needle at position 5";
+            // Act
+            string actual = Kata.FindNeedle(input);
+            // Assert
+            Assert.That(actual, Is.EqualTo(expectedOutput));
+        }
     }
 }
