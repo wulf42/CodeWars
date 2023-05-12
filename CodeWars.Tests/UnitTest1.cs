@@ -103,7 +103,6 @@ namespace CodeWars.Tests
         }
 
         [Test]
-
         public void FindNeedle_GivenStringArray_ReturnPositionOfNeedleString()
         {
             //Arrange
