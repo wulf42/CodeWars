@@ -300,4 +300,28 @@ public static class Kata
             _ => string.Format("{0}, {1} and {2} others like this", name[0], name[1], name.Length - 2),
         };
     }
+
+    public static string[] dirReduc(String[] arr)
+    {
+        List<string> result = new List<string>();
+        Dictionary<string, string> opposites = new Dictionary<string, string>()
+        {
+            {"NORTH", "SOUTH"},
+            {"SOUTH", "NORTH"},
+            {"EAST", "WEST"},
+            {"WEST", "EAST"}
+        };
+        foreach (string d in arr)
+        {
+            if (result.LastOrDefault() == opposites[d])
+            {
+                result.RemoveAt(result.Count - 1);
+            }
+            else
+            {
+                result.Add(d);
+            }
+        }
+        return result.ToArray();
+    }
 }
