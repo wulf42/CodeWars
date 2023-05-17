@@ -94,3 +94,14 @@ static void foo4()
         Console.WriteLine(v);
     }
 }
+static void foo5(string text)
+{
+    var query = text
+        .GroupBy(c => c)
+        .Select(c => new { Letter = c.Key, Count = c.Count() });
+
+    foreach (var pair in query)
+    {
+        Console.WriteLine(pair);
+    }
+}
