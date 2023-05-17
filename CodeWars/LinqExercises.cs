@@ -62,3 +62,35 @@ static void foo2()
         Console.Write($"{n} ");
     }
 }
+static void foo3()
+{
+    int[] arr1 = new[] { 3, 9, 2, 8, 6, 5 };
+    var query =
+        from n in arr1
+        select $"Number = {n} SqrNo = {n * n}";
+    var query2 =
+        from Number in arr1
+        let SqrNo = Number * Number
+        select new { Number, SqrNo };
+    var query3 = arr1.Select(s => new { Number = s, SqrNo = s * s });
+
+    foreach (var v in query3)
+    {
+        Console.WriteLine("{0}", v);
+    }
+}
+static void foo4()
+{
+    int[] arr1 = new int[] { 5, 9, 1, 2, 3, 7, 5, 6, 7, 3, 7, 6, 8, 5, 4, 9, 6, 2 };
+
+    var query =
+        arr1
+        .GroupBy(x => x)
+        .Select(x =>
+        new { Number = x.Key, Count = x.Count() });
+
+    foreach (var v in query)
+    {
+        Console.WriteLine(v);
+    }
+}
