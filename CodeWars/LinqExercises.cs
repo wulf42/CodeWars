@@ -105,3 +105,44 @@ static void foo5(string text)
         Console.WriteLine(pair);
     }
 }
+static void foo6()
+{
+    string[] dayWeek = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+
+    var query = dayWeek
+        .Select(d => d);
+    foreach (string day in query)
+    {
+        Console.WriteLine(day);
+    }
+}
+static void foo7()
+{
+    int[] numbers = new int[] { 5, 1, 9, 2, 3, 7, 4, 5, 6, 8, 7, 6, 3, 4, 5, 2 };
+
+    var query = numbers
+        .GroupBy(n => n)
+        .Select(n =>
+        new { Number = n.Key, Result = n.Key * n.Count(), Count = n.Count() });
+    foreach (var n in query)
+    {
+        Console.WriteLine(n);
+    }
+}
+static void foo8(char start, char end)
+{
+    string[] cities =
+            {
+                "ROME","LONDON","NAIROBI","CALIFORNIA","ZURICH","NEW DELHI","AMSTERDAM","ABU DHABI", "PARIS"
+            };
+
+    var query = cities
+        .Select(c => c)
+        .Where(c => c.StartsWith(start))
+        .Where(c => c.EndsWith(end));
+
+    foreach (var c in query)
+    {
+        Console.WriteLine(c);
+    }
+}
