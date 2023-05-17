@@ -146,3 +146,27 @@ static void foo8(char start, char end)
         Console.WriteLine(c);
     }
 }
+static void foo9()
+{
+    List<int> templist = new List<int> { 55, 200, 740, 76, 230, 482, 95 };
+
+    var query = templist.Select(n => n).Where(n => n > 80);
+
+    foreach (int item in query)
+    {
+        Console.WriteLine(item);
+    }
+}
+static void foo10(int count)
+{
+    List<int> templist = new List<int> { 5, 7, 13, 24, 6, 9, 8, 7 };
+
+    var query = templist
+        .OrderByDescending(n => n)
+        .Select(n => n).Take(count);
+
+    foreach (int item in query)
+    {
+        Console.WriteLine(item);
+    }
+}
