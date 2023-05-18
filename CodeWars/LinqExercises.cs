@@ -1,4 +1,6 @@
-﻿static List<string> cards()
+﻿using CodeWars;
+
+static List<string> cards()
 {
     static IEnumerable<string> Typ()
     {
@@ -173,16 +175,29 @@ static void foo11(int count)
 static void foo12(string text)
 {
     var query = text.Split(' ')
-        .Select(x => x)
-        .Where(x =>
-        String.Equals(x, x.ToUpper()));
+        .Select(s => s)
+        .Where(s =>
+        String.Equals(s, s.ToUpper()));
 
     foreach (var item in query)
     {
         Console.WriteLine(item);
     }
 }
-static void foo13()
-{
+static string foo13(string[] ar) => String.Join(", ", ar);
 
+static void foo14(int n)
+{
+    Students s = new Students();
+    var studentlist = s.GtStuRec();
+
+    var query2 = studentlist
+        .Select(s => s)
+        .OrderByDescending(s => s.GrPoint)
+        .Take(n);
+
+    foreach (var item in query2)
+    {
+        Console.WriteLine($"Id: {item.StuId}, Name: {item.StuName}, achieved Grade Point: {item.GrPoint}");
+    }
 }
