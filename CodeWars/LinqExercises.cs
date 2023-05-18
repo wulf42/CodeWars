@@ -148,7 +148,7 @@ static void foo8(char start, char end)
 }
 static void foo9()
 {
-    List<int> templist = new List<int> { 55, 200, 740, 76, 230, 482, 95 };
+    List<int> templist = new() { 55, 200, 740, 76, 230, 482, 95 };
 
     var query = templist.Select(n => n).Where(n => n > 80);
 
@@ -157,9 +157,9 @@ static void foo9()
         Console.WriteLine(item);
     }
 }
-static void foo10(int count)
+static void foo11(int count)
 {
-    List<int> templist = new List<int> { 5, 7, 13, 24, 6, 9, 8, 7 };
+    List<int> templist = new() { 5, 7, 13, 24, 6, 9, 8, 7 };
 
     var query = templist
         .OrderByDescending(n => n)
@@ -169,4 +169,20 @@ static void foo10(int count)
     {
         Console.WriteLine(item);
     }
+}
+static void foo12(string text)
+{
+    var query = text.Split(' ')
+        .Select(x => x)
+        .Where(x =>
+        String.Equals(x, x.ToUpper()));
+
+    foreach (var item in query)
+    {
+        Console.WriteLine(item);
+    }
+}
+static void foo13()
+{
+
 }
