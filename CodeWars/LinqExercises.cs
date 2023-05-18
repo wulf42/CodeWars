@@ -27,10 +27,11 @@ static List<string> cards()
         yield return "ace";
     }
 
-    var deck = (from t in Typ()
+    var deck = (
+                from t in Typ()
                 from w in Wartosc()
-                select $"{w} of {t}")
-                .ToList();
+                select $"{w} of {t}"
+                ).ToList();
 
     return deck;
 }
@@ -54,7 +55,8 @@ static void foo2()
                 1, 3, -2, -4, -7, -3, -8, 12, 19, 6, 9, 10, 14
             };
 
-    var query = from n in numbers
+    var query =
+                from n in numbers
                 where n > 0
                 where n < 12
                 select n;
@@ -74,7 +76,8 @@ static void foo3()
         from Number in arr1
         let SqrNo = Number * Number
         select new { Number, SqrNo };
-    var query3 = arr1.Select(s => new { Number = s, SqrNo = s * s });
+    var query3 = arr1
+        .Select(s => new { Number = s, SqrNo = s * s });
 
     foreach (var v in query3)
     {
@@ -152,7 +155,9 @@ static void foo9()
 {
     List<int> templist = new() { 55, 200, 740, 76, 230, 482, 95 };
 
-    var query = templist.Select(n => n).Where(n => n > 80);
+    var query = templist
+        .Select(n => n)
+        .Where(n => n > 80);
 
     foreach (int item in query)
     {
@@ -174,10 +179,10 @@ static void foo11(int count)
 }
 static void foo12(string text)
 {
-    var query = text.Split(' ')
+    var query = text
+        .Split(' ')
         .Select(s => s)
-        .Where(s =>
-        String.Equals(s, s.ToUpper()));
+        .Where(s => String.Equals(s, s.ToUpper()));
 
     foreach (var item in query)
     {
@@ -185,7 +190,6 @@ static void foo12(string text)
     }
 }
 static string foo13(string[] ar) => String.Join(", ", ar);
-
 static void foo14(int n)
 {
     Students s = new Students();
@@ -199,5 +203,19 @@ static void foo14(int n)
     foreach (var item in query2)
     {
         Console.WriteLine($"Id: {item.StuId}, Name: {item.StuName}, achieved Grade Point: {item.GrPoint}");
+    }
+}
+static void foo15()
+{
+    string[] arr1 = { "xd.pl.txt", "aaa.frx", "bbb.TXT", "xyz.dbf", "abc.pdf", "aaaa.PDF", "xyz.frt", "abc.xml", "ccc.txt", "zzz.txt" };
+
+    var query = arr1
+        .Select(s => s.Substring(s.LastIndexOf('.') + 1).ToLower())
+        .GroupBy(s => s)
+        .Select(s => new { Count = s.Count(), Extension = s.Key });
+
+    foreach (var item in query)
+    {
+        Console.WriteLine(item);
     }
 }
